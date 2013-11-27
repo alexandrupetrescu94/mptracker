@@ -24,7 +24,7 @@ def questions(
         cache_name=None,
         throttle=None,
         autoanalyze=False,
-        ):
+):
     from mptracker.scraper.questions import QuestionScraper
     from mptracker.questions import ocr_question
     from mptracker.policy import calculate_question
@@ -167,7 +167,7 @@ def groups(
         cache_name=None,
         throttle=None,
         no_commit=False,
-        ):
+):
     from mptracker.scraper.groups import GroupScraper, Interval
 
     http_session = create_session(cache_name=cache_name,
@@ -322,7 +322,7 @@ def proposals(
         cache_name=None,
         throttle=None,
         autoanalyze=False,
-        ):
+):
     from mptracker.scraper.proposals import ProposalScraper
     from mptracker.proposals import ocr_proposal
     from mptracker.policy import calculate_proposal
@@ -424,7 +424,7 @@ def proposals(
                     [act_fields(r) for r in prop.activity[:len(db_activity)]]):
                     logger.warn("History doesn't match for %s, "
                                 "%d items will be removed",
-                                row.id,len(db_activity))
+                                row.id, len(db_activity))
                     db_activity = []
 
                 for n, ac in enumerate(prop.activity):
@@ -613,7 +613,7 @@ def votes(
         throttle=None,
         no_commit=False,
         autoanalyze=False,
-        ):
+):
     from mptracker.scraper.votes import VoteScraper
 
     if start is None:
@@ -629,7 +629,6 @@ def votes(
     http_session = create_session(cache_name=cache_name,
                                   throttle=throttle and float(throttle))
     vote_scraper = VoteScraper(http_session)
-
 
     voting_session_patcher = TablePatcher(
         models.VotingSession,
